@@ -1,0 +1,4 @@
+project: riscv-isa-sim
+target: spike-dasm
+cmds:
+  - cmd: /repo/spike-dasm
