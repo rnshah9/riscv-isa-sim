@@ -31,6 +31,8 @@ typedef enum {
   EXT_ZBPBO,
   EXT_ZPN,
   EXT_ZPSFOPERAND,
+  EXT_SMEPMP,
+  EXT_SMSTATEEN,
   EXT_SVNAPOT,
   EXT_SVPBMT,
   EXT_SVINVAL,
@@ -50,6 +52,7 @@ typedef enum {
   EXT_XZBM,
   EXT_XZBR,
   EXT_XZBT,
+  EXT_SSTC,
 } isa_extension_t;
 
 typedef enum {

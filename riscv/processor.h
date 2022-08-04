@@ -118,7 +118,6 @@ struct type_sew_t<64>
   using type=int64_t;
 };
 
-
 // architectural state of a RISC-V hart
 struct state_t
 {
@@ -134,6 +133,7 @@ struct state_t
   bool v;
   misa_csr_t_p misa;
   mstatus_csr_t_p mstatus;
+  csr_t_p mstatush;
   csr_t_p mepc;
   csr_t_p mtval;
   csr_t_p mtvec;
@@ -186,6 +186,17 @@ struct state_t
   csr_t_p menvcfg;
   csr_t_p senvcfg;
   csr_t_p henvcfg;
+
+  csr_t_p mstateen[4];
+  csr_t_p sstateen[4];
+  csr_t_p hstateen[4];
+
+  csr_t_p htimedelta;
+  time_counter_csr_t_p time;
+  csr_t_p time_proxy;
+
+  csr_t_p stimecmp;
+  csr_t_p vstimecmp;
 
   bool serialized; // whether timer CSRs are in a well-defined state
 

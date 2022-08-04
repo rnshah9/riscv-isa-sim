@@ -164,6 +164,10 @@ isa_parser_t::isa_parser_t(const char* str, const char *priv)
     } else if (ext_str == "zkr") {
       extension_table[EXT_ZKR] = true;
     } else if (ext_str == "zkt") {
+    } else if (ext_str == "smepmp") {
+      extension_table[EXT_SMEPMP] = true;
+    } else if (ext_str == "smstateen") {
+      extension_table[EXT_SMSTATEEN] = true;
     } else if (ext_str == "svnapot") {
       extension_table[EXT_SVNAPOT] = true;
     } else if (ext_str == "svpbmt") {
@@ -177,6 +181,8 @@ isa_parser_t::isa_parser_t(const char* str, const char *priv)
     } else if (ext_str == "zicbop") {
     } else if (ext_str == "zicntr") {
     } else if (ext_str == "zihpm") {
+    } else if (ext_str == "sstc") {
+        extension_table[EXT_SSTC] = true;
     } else if (ext_str[0] == 'x') {
       max_isa |= 1L << ('x' - 'a');
       extension_table[toupper('x')] = true;
@@ -244,4 +250,7 @@ isa_parser_t::isa_parser_t(const char* str, const char *priv)
     max_isa |= reg_t(supervisor) << ('s' - 'a');
     extension_table['S'] = true;
   }
+
+  if (((max_isa >> ('h' - 'a')) & 1) && !supervisor)
+    bad_isa_string(str, "'H' extension requires S mode");
 }
